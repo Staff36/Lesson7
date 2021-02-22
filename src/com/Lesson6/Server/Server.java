@@ -39,13 +39,13 @@ public class Server {
             }
     }
 
-    public void subscribe(ClientHandler handler){
+    public synchronized void subscribe(ClientHandler handler){
         handlers.add(handler);
     }
-    public void unsubscribe(ClientHandler handler){
+    public synchronized void unsubscribe(ClientHandler handler){
         handlers.remove(handler);
     }
-    public void broadcast(String message) throws IOException {
+    public synchronized void broadcast(String message) throws IOException {
         for (ClientHandler handler: handlers) {
             handler.sendMessage(message);
         }
@@ -54,7 +54,7 @@ public class Server {
     public AuthentificatonService getAuthentificatonService() {
         return authentificatonService;
     }
-    public boolean isFreeNickName(String nickName){
+    public synchronized boolean isFreeNickName(String nickName){
         for (ClientHandler handler:handlers) {
             if (handler.getNickName().equals(nickName)){
             return false;
@@ -63,7 +63,7 @@ public class Server {
         return true;
     }
 
-    public void singlecast(String nickName, String message) throws IOException{
+    public synchronized void singlecast(String nickName, String message) throws IOException{
         for (ClientHandler handler: handlers) {
             if (handler.getNickName().equals(nickName)){
             handler.sendMessage(message);}
