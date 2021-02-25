@@ -5,12 +5,12 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class Client implements ChatNetworking{
+public class ClientNetworking implements ChatNetworkingInterface {
     private Socket socket;
     private final DataInputStream in;
     private final DataOutputStream out;
 
-    public Client(String host, int port) {
+    public ClientNetworking(String host, int port) {
         try {
             this.socket = new Socket(host,port);
             in= new DataInputStream(socket.getInputStream());

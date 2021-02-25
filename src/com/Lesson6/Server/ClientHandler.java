@@ -1,5 +1,6 @@
 package com.Lesson6.Server;
 
+import com.Lesson6.Server.Auth.AuthTimer;
 import com.Lesson6.Server.Auth.AuthentificationData;
 
 import java.io.DataInputStream;
@@ -32,9 +33,10 @@ public class ClientHandler {
         try {
             doAuth();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Guest was disconnected from server");
         }
         readMessage();
+        System.out.println("Client was disconnected from server. Socket "+ socket);
     }
     public void sendMessage(String message) throws IOException {
             out.writeUTF(message);
@@ -45,11 +47,19 @@ public class ClientHandler {
             try {
                 message = in.readUTF();
                 sender(message);
+
             } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    server.unsubscribe(this);
+                    server.broadcast("Server: "+this.getNickName()+" has left from chat");
+                } catch (IOException ioException) {
+                    throw new RuntimeException("SWW in broadcasting after disconnecting one of users", ioException);
+                }
+                return;
             }
         }
     }
+
     private void sender(String message) throws IOException {
         if (message.startsWith("/w ")){
             String[] messageArray=message.split(" ");
@@ -58,7 +68,7 @@ public class ClientHandler {
                 server.singlecast(messageArray[1], nickName+" PERSONAL: "+message);
                 sendMessage("PERSONAL FOR "+messageArray[1]+": "+message);
             } else{
-                sendMessage("User with nick "+messageArray[1]+" is not found");
+                sendMessage("Server: Nickname "+messageArray[1]+" is not found");
             }
         }else {
             server.broadcast(nickName+": "+message);
@@ -75,7 +85,8 @@ public class ClientHandler {
     }
 
     private void doAuth() throws IOException {
-        while (true) {
+        AuthTimer authTimer= new AuthTimer(12000);
+        while (authTimer.checkTheTimeForAuth()) {
             String  input= in.readUTF();
             if (input.startsWith("-auth ")){
                 String[] credentials = input.split("\\s");
@@ -86,22 +97,23 @@ public class ClientHandler {
                         if (server.isFreeNickName(maybeAuth.getNickName())) {
                             sendMessage("Server: Authentification is complete");
                             nickName = maybeAuth.getNickName();
-                            server.broadcast("logged in");
+                            server.broadcast("Server:"+this.getNickName()+" joined this chat");
                             server.subscribe(this);
                             return;
                         } else{
-                            sendMessage("This user is already logged in");
+                            sendMessage("Server: This user is already logged in");
                         }
                     } else {
-                        sendMessage("Unknown user, incorrect login or password");
+                        sendMessage("Server: Unknown user, incorrect login or password");
                     }
                 } else{
-                    sendMessage("Invalid authentification request");
+                    sendMessage("Server: Invalid authentification request");
                 }
             } else{
-                sendMessage("Invalid authentification request");
+                sendMessage("Server: Invalid authentification request");
             }
         }
+        sendMessage("Server: Time to login is over, try again later");
     }
 
     public String getNickName() {

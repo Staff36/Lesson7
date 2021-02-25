@@ -1,25 +1,23 @@
 package com.Lesson6.Client.GUI;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.function.Consumer;
 
 public class ClientChatFrame implements ChatFrameInteraction{
-private final ChatFrame chatFrame;
-private final Consumer<String> messageConsumer;
+    private final ChatFrame chatFrame;
 
     public ClientChatFrame(Consumer<String> messageConsumer) {
-        this.messageConsumer = messageConsumer;
-        this.chatFrame = new ChatFrame("Elegramm");
+        this.chatFrame = new ChatFrame("Elegramm",messageConsumer);
     }
 
     @Override
-    public void append(String message) {
-
+    public synchronized void append(String message) {
+        if (message.equals("Server: Authentification is complete") && !chatFrame.isConnected()) {
+            chatFrame.initMainPanel();
+        } else if (!chatFrame.isConnected()){
+            chatFrame.getServerRequest().setText(message);
+        }else{
+            chatFrame.getChatArea().setText(chatFrame.getChatArea().getText()+message+"\n");
+        }
     }
 
-    @Override
-    public String submit() {
-        return null;
-    }
 }

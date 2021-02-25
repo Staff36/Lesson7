@@ -31,12 +31,13 @@ public class Server {
 
 
     private void init() throws IOException {
-            while (true){
-                System.out.println("Server was started");
-                Socket client= serverSocket.accept();
-                System.out.println("Client accepted "+client);
-                new ClientHandler(client, this );
-            }
+        System.out.println("Server was started");
+        while (true){
+            System.out.println("Waiting for new connection");
+            Socket client= serverSocket.accept();
+            System.out.println("Client accepted "+client);
+            new ClientHandler(client, this );
+        }
     }
 
     public synchronized void subscribe(ClientHandler handler){
@@ -68,5 +69,9 @@ public class Server {
             if (handler.getNickName().equals(nickName)){
             handler.sendMessage(message);}
         }
+    }
+
+    public static void main(String[] args) {
+        new Server();
     }
 }
