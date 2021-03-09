@@ -1,9 +1,9 @@
 package com.Lesson6.Client.GUI;
 
+import com.Lesson6.Client.GUI.Listeners.LoginActionListener;
 import com.Lesson6.Client.GUI.Listeners.LoginKeyListener;
 import com.Lesson6.Client.GUI.Listeners.MainActionListener;
 import com.Lesson6.Client.GUI.Listeners.MainKeyListener;
-import com.Lesson6.Client.GUI.Listeners.LoginActionListener;
 
 import javax.swing.*;
 import java.awt.*;
