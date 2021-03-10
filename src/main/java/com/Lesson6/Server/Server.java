@@ -1,6 +1,7 @@
 package com.Lesson6.Server;
 
 import com.Lesson6.Server.Auth.AuthentificatonService;
+import com.Lesson6.Server.Auth.DataBaseController;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -32,12 +33,17 @@ public class Server {
 
     private void init() throws IOException {
         System.out.println("Server was started");
+        DataBaseController.connectToDB();
+        System.out.println("-------------------------\nList of registered users");
+        DataBaseController.displayAllUsersNickNames();
+        System.out.println("-------------------------");
         while (true){
             System.out.println("Waiting for new connection");
             Socket client= serverSocket.accept();
             System.out.println("Client accepted "+client);
             new ClientHandler(client, this );
         }
+
     }
 
     public synchronized void subscribe(ClientHandler handler){

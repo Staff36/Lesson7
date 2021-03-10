@@ -21,6 +21,13 @@ public class AuthentificationData {
         return password;
     }
 
+    @Override
+    public String toString() {
+        return "AuthentificationData{" +
+                "nickName='" + nickName + '\'' +
+                '}';
+    }
+
     public String getNickName() {
         return nickName;
     }
