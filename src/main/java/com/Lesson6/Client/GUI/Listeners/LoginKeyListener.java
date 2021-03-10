@@ -17,15 +17,16 @@ public class LoginKeyListener implements KeyListener {
         this.consumer = consumer;
         this.loginField = loginField;
         this.passwordField = passwordField;
-        this.prefix=prefix;
+        this.prefix = prefix;
     }
+
     public LoginKeyListener(Consumer<String> consumer, JTextField loginField, JTextField passwordField, JTextField confirmPassword, JTextField nickname, String prefix) {
         this.consumer = consumer;
         this.loginField = loginField;
         this.passwordField = passwordField;
-        this.confirmPassword=confirmPassword;
-        this.prefix=prefix;
-        this.nickname= nickname;
+        this.confirmPassword = confirmPassword;
+        this.prefix = prefix;
+        this.nickname = nickname;
     }
 
     @Override
@@ -35,26 +36,27 @@ public class LoginKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getKeyCode()==10){
-            String login= removeSpaces(loginField);
+        if (e.getKeyCode() == 10){
+            String login = removeSpaces(loginField);
             String password= removeSpaces(passwordField);
             if (login.isBlank()||password.isBlank()){
                 return;
             }
             switch (prefix){
                 case "-auth":{
-                    consumer.accept(prefix+" "+login+" "+password);
+                    consumer.accept(prefix + " " + login + " " + password);
                     break;}
                 case "-register":
                     String confirm= removeSpaces(confirmPassword);
                     String nick= removeSpaces(nickname);
                     if (confirm.equals(password)&&!nick.isBlank()){
-                        consumer.accept(prefix+" "+login+" "+password+" "+nick);
+                        consumer.accept(prefix + " " + login + " " + password + " " + nick);
                         break;
                     }
             }
         }
     }
+
     private static String removeSpaces(JTextField textField){
         return textField.getText().replaceAll("\\s","");
     }

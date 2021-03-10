@@ -11,9 +11,9 @@ public class ClientChatFrame implements ChatFrameInteraction{
 
     @Override
     public synchronized void append(String message) {
-        if ((message.equals("Server: Authentification is complete")|| message.equals("Server: Registration is complete")) &&
+        if ((message.equals("Server: Authentification is complete") || message.equals("Server: Registration is complete")) &&
                 !chatFrame.isConnected()) {
-                        chatFrame.initMainPanel();
+            chatFrame.initMainPanel();
         } else if (!chatFrame.isConnected()){
             chatFrame.getAuthServerRequest().setText(message);
             chatFrame.getRegistrationServerRequest().setText(message);

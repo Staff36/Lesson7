@@ -10,35 +10,34 @@ import java.awt.*;
 import java.util.function.Consumer;
 
 public class ChatFrame extends JFrame{
-    private final JPanel topPanel= new JPanel();
-    private final JPanel bottomPanel= new JPanel();
-    private final Icon icon= new ImageIcon("sendIcon.png");
-    private final JButton sendButton= new JButton(icon);
-    private final JTextField inputField= new JTextField();
-    private final JTextPane chatArea= new JTextPane();
+    private final Icon icon = new ImageIcon("sendIcon.png");
+    private JPanel authPanel = new JPanel();
+    private final JPanel topPanel = new JPanel();
+    private final JPanel bottomPanel = new JPanel();
+    private final JPanel registrationPanel =new JPanel();
+    private final JPanel loginPanel = new JPanel();
+    private final JButton sendButton = new JButton(icon);
+    private final JTextField inputField = new JTextField();
+    private final JTextPane chatArea = new JTextPane();
     private final Consumer<String> messageConsumer;
-    private boolean connected=false;
-    private JLabel authServerRequest = new JLabel();
-    private JLabel registrationServerRequest = new JLabel();
-    private JPanel authPanel=new JPanel();;
-    private JPanel registrationPanel=new JPanel();
-    private JPanel loginPanel= new JPanel();
+    private final JLabel authServerRequest = new JLabel();
+    private final JLabel registrationServerRequest = new JLabel();
+    private boolean connected = false;
+
+
     public void setConnected(boolean connected) {
         this.connected = connected;
     }
 
-
     public ChatFrame(String title, Consumer<String> messageConsumer){
-
-        this.messageConsumer=messageConsumer;
+        this.messageConsumer = messageConsumer;
         initChatFrame();
         setTitle(title);
-
-       // initRegistrationPanel();
         setBounds(50,50,300,340);
         initLoginPanel();
         setVisible(true);
     }
+
     public void initLoginPanel(){
         add(loginPanel);
         initRegistrationPanel(loginPanel);
@@ -48,30 +47,26 @@ public class ChatFrame extends JFrame{
 
     public void initAuthPanel(JPanel panel){
         registrationPanel.setVisible(false);
-        JButton loginButton= new JButton("Sign in");
+        JButton loginButton = new JButton("Sign in");
         JButton signUpButton= new JButton("Sign up");
-        JTextField loginField = new JTextField();
         JLabel loginLabel = new JLabel("Login:");
+        JLabel passwordLabel = new JLabel("Password");
         JPanel logPanel = new JPanel();
         JPanel passPanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        JTextField loginField = new JTextField();
         JTextField passwordField = new JTextField();
-        JLabel passwordLabel = new JLabel("Password");
         loginField.setColumns(16);
         passwordField.setColumns(16);
         passwordField.setColumns(16);
-        JPanel buttonPanel = new JPanel();
 
         panel.add(authPanel);
         authPanel.setLayout(new GridLayout(4,1));
-
         authPanel.add(authServerRequest);
-
         authPanel.add(logPanel);
         logPanel.setLayout(new FlowLayout());
-
         authPanel.add(passPanel);
         passPanel.setLayout(new FlowLayout());
-
         authPanel.add(buttonPanel);
         buttonPanel.setLayout(new GridLayout(1,3));
 
@@ -88,7 +83,6 @@ public class ChatFrame extends JFrame{
         signUpButton.addActionListener(e -> {
             authPanel.setVisible(false);
             registrationPanel.setVisible(true);
-
         });
         authPanel.setVisible(true);
     }
@@ -96,31 +90,29 @@ public class ChatFrame extends JFrame{
     public void initRegistrationPanel(JPanel panel){
         registrationPanel.setVisible(true);
         authPanel.setVisible(false);
-        JButton loginButton= new JButton("Sign up");
-        JButton signUpButton= new JButton("Back");
-        JTextField loginField = new JTextField();
-        JTextField nickNameField = new JTextField();
+        JButton loginButton = new JButton("Sign up");
+        JButton signUpButton = new JButton("Back");
         JLabel nickNameLabel = new JLabel("Nickname:");
         JLabel loginLabel = new JLabel("Login:");
+        JLabel passwordLabel = new JLabel("Password");
+        JLabel confirmPasswordLabel = new JLabel("Confirm");
         JPanel logPanel = new JPanel();
         JPanel passPanel = new JPanel();
         JPanel confirmPassPanel = new JPanel();
+        JPanel nickNamePanel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        JTextField loginField = new JTextField();
+        JTextField nickNameField = new JTextField();
         JTextField passwordField = new JTextField();
         JTextField confirmPasswordField = new JTextField();
-        JLabel passwordLabel = new JLabel("Password");
-        JLabel confirmPasswordLabel = new JLabel("Confirm");
-        JPanel nickNamePanel = new JPanel();
         authPanel=new JPanel();
         loginField.setColumns(16);
         passwordField.setColumns(16);
         confirmPasswordField.setColumns(16);
         nickNameField.setColumns(16);
-        JPanel buttonPanel = new JPanel();
 
         panel.add(registrationPanel);
         registrationPanel.setLayout(new GridLayout(7,1));
-//row0
-        registrationPanel.add(new JLabel());
 //row1
         registrationPanel.add(registrationServerRequest);
 //row2
@@ -142,19 +134,14 @@ public class ChatFrame extends JFrame{
 
         logPanel.add(loginLabel);
         logPanel.add(loginField);
-
         passPanel.add(passwordLabel);
         passPanel.add(passwordField);
-
         confirmPassPanel.add(confirmPasswordLabel);
         confirmPassPanel.add(confirmPasswordField);
-
         nickNamePanel.add(nickNameLabel);
         nickNamePanel.add(nickNameField);
-
         buttonPanel.add(signUpButton);
         buttonPanel.add(loginButton);
-
 
         loginField.addKeyListener(new LoginKeyListener(messageConsumer, loginField, passwordField,
                 confirmPasswordField, nickNameField, "-register"));
@@ -170,15 +157,16 @@ public class ChatFrame extends JFrame{
 
 
     }
+
     public void initMainPanel(){
         setBounds(0,0,400,600);
         setConnected(true);
         loginPanel.setVisible(false);
-        JPanel mainJpanel = new JPanel();
-        add(mainJpanel);
-        mainJpanel.setLayout(new BorderLayout());
-        mainJpanel.add(topPanel,BorderLayout.CENTER);
-        mainJpanel.add(bottomPanel,BorderLayout.SOUTH);
+        JPanel mainJPanel = new JPanel();
+        add(mainJPanel);
+        mainJPanel.setLayout(new BorderLayout());
+        mainJPanel.add(topPanel,BorderLayout.CENTER);
+        mainJPanel.add(bottomPanel,BorderLayout.SOUTH);
         setTopPanel();
         setBottomPanel();
         sendButton.addActionListener(new MainActionListener(messageConsumer, inputField, chatArea));
@@ -216,7 +204,4 @@ public class ChatFrame extends JFrame{
         return registrationServerRequest;
     }
 
-    public void setRegistrationServerRequest(JLabel registrationServerRequest) {
-        this.registrationServerRequest = registrationServerRequest;
-    }
 }

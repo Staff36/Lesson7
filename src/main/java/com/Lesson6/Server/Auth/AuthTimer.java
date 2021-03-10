@@ -7,11 +7,12 @@ public class AuthTimer {
 
     public AuthTimer(long TIME_ON_AUTH) {
         this.startTime = System.currentTimeMillis();
-        this.TIME_ON_AUTH=TIME_ON_AUTH;
+        this.TIME_ON_AUTH = TIME_ON_AUTH;
     }
+
     public boolean checkTheTimeForAuth(){
-        deltaTime=System.currentTimeMillis()-startTime;
-        return TIME_ON_AUTH>deltaTime?true:false;
+        deltaTime = System.currentTimeMillis()-startTime;
+        return TIME_ON_AUTH > deltaTime;
     }
 
 }

@@ -13,8 +13,8 @@ public class ClientNetworking implements ChatNetworkingInterface {
     public ClientNetworking(String host, int port) {
         try {
             this.socket = new Socket(host,port);
-            in= new DataInputStream(socket.getInputStream());
-            out=new DataOutputStream(socket.getOutputStream());
+            in = new DataInputStream(socket.getInputStream());
+            out = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             throw new RuntimeException("SWW during establishing", e);
         }
@@ -24,7 +24,7 @@ public void send(String message){
     try {
         out.writeUTF(message);
     } catch (IOException e) {
-        throw new RuntimeException("SWW dutring send", e);
+        throw new RuntimeException("SWW during send", e);
     }
 }
 
@@ -32,7 +32,7 @@ public String receive(){
     try {
         return in.readUTF();
     } catch (IOException e) {
-        throw new RuntimeException("SWW dutring receive", e);
+        throw new RuntimeException("SWW during receive", e);
     }
 }
 }

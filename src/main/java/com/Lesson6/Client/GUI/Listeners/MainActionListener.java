@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.function.Consumer;
 
 public class MainActionListener extends Sender implements ActionListener {
+
     public MainActionListener(Consumer<String> consumer, JTextField inputField, JTextPane chatArea) {
         super(consumer, inputField, chatArea);
     }

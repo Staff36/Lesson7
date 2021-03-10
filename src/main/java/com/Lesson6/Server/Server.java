@@ -12,12 +12,12 @@ import java.util.Set;
 public class Server {
     private final AuthentificatonService authentificatonService;
     private ServerSocket serverSocket;
+    private final Set<ClientHandler> handlers;
+
 
     public Set<ClientHandler> getHandlers() {
         return handlers;
     }
-
-    private final Set<ClientHandler> handlers;
 
     public Server() {
         this.authentificatonService = new AuthentificatonService();
@@ -29,7 +29,6 @@ public class Server {
             throw new RuntimeException("Something wrong", e);
         }
     }
-
 
     private void init() throws IOException {
         System.out.println("Server was started");
@@ -61,6 +60,7 @@ public class Server {
     public AuthentificatonService getAuthentificatonService() {
         return authentificatonService;
     }
+
     public synchronized boolean isFreeNickName(String nickName){
         for (ClientHandler handler:handlers) {
             if (handler.getNickName().equals(nickName)){

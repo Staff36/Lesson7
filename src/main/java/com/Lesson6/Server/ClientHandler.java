@@ -20,7 +20,7 @@ public class ClientHandler {
 
         this.socket = socket;
         try {
-            this.server= server;
+            this.server = server;
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
             new Thread(this::listen)
@@ -30,6 +30,7 @@ public class ClientHandler {
             throw new RuntimeException("Something wrong, e");
         }
     }
+
     private void listen(){
         try {
             doAuth();
@@ -40,12 +41,14 @@ public class ClientHandler {
         readMessage();
         System.out.println("Client was disconnected from server. Socket "+ socket);
     }
+
     public void sendMessage(String message) throws IOException {
             out.writeUTF(message);
     }
+
     public void readMessage()  {
         while (true){
-            String message= null;
+            String message  = null;
             try {
                 message = in.readUTF();
                 sender(message);
@@ -114,7 +117,7 @@ public class ClientHandler {
         if (registerCredentials.length==4){
             if (server.getAuthentificatonService().findUserByCredentials(registerCredentials[1], registerCredentials[2])==null){
                 if (server.getAuthentificatonService().nicknameIsFree(registerCredentials[3])){
-                    DataBaseController.addUserToDB(registerCredentials[1],registerCredentials[2],registerCredentials[3]);
+                    DataBaseController.addUserToDB(registerCredentials[1], registerCredentials[2], registerCredentials[3]);
                     sendMessage("Server: Registration is complete");
                     server.broadcast("Server:"+this.getNickName()+" joined this chat");
                     server.subscribe(this);
@@ -131,6 +134,7 @@ public class ClientHandler {
         }
         return false;
     }
+
     public boolean doAuthorize(String input) throws IOException {
         String[] credentials = input.split("\\s");
         if (credentials.length==3) {
