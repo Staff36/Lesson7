@@ -1,4 +1,6 @@
-package com.Lesson6.Server.Auth;
+package com.Lesson6.Server.Auth.Controllers;
+
+import com.Lesson6.Server.Auth.AuthentificationData;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ public class DataBaseController {
     private static ResultSet resultSet;
     private static PreparedStatement preparedStatement;
 
-    public static void connectToDB()  {
+    public void connectToDB()  {
         try {
             Class.forName("org.sqlite.JDBC");
         } catch (ClassNotFoundException e) {
@@ -25,7 +27,7 @@ public class DataBaseController {
         System.out.println("Connection to database successful");
     }
 
-    public synchronized static void addUserToDB(String login, String password, String nickname)  {
+    public synchronized void addUserToDB(String login, String password, String nickname)  {
         try {
             preparedStatement=connection.prepareStatement("INSERT INTO 'accounts' ('login', 'pass','nickname') VALUES (?,?,?)");
             preparedStatement.setString(1,login);
@@ -37,7 +39,7 @@ public class DataBaseController {
         }
     }
 
-    public synchronized static AuthentificationData getUser(String login, String password){
+    public synchronized AuthentificationData getUser(String login, String password){
         try {
             resultSet= statement.executeQuery("SELECT * FROM 'accounts' WHERE login='" + login + "' AND pass='" + password + "'");
             while (resultSet.next()){
@@ -52,7 +54,7 @@ public class DataBaseController {
         }
     }
 
-    public synchronized static void displayAllUsersNickNames(){
+    public synchronized void displayAllUsersNickNames(){
         try {
             resultSet=statement.executeQuery("SELECT nickname FROM 'accounts'");
             while (resultSet.next()){
@@ -63,7 +65,7 @@ public class DataBaseController {
         }
     }
 
-    public synchronized static List<String> getAllUsersNickNames(){
+    public synchronized List<String> getAllUsersNickNames(){
         List<String> nicknames = new ArrayList<>();
         try {
             resultSet=statement.executeQuery("SELECT nickname FROM 'accounts'");
@@ -76,7 +78,7 @@ public class DataBaseController {
         return  nicknames;
     }
 
-    public static void closeAllConnections(){
+    public void closeAllConnections(){
         try {
             resultSet.close();
             if (preparedStatement != null)
@@ -88,7 +90,7 @@ public class DataBaseController {
         }
     }
 
-    public synchronized static void clearDB(){
+    public synchronized void clearDB(){
         try {
             statement.execute("DELETE FROM accounts");
         } catch (SQLException throwables) {
