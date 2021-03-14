@@ -56,7 +56,7 @@ public class ClientHandler {
             } catch (IOException e) {
                 try {
                     server.unsubscribe(this);
-                    server.broadcast("Server: " + this.getNickName() + " has left from chat");
+                    server.broadcast("Server: " + nickName + " has left from chat.");
                 } catch (IOException ioException) {
                     throw new RuntimeException("SWW in broadcasting after disconnecting one of users", ioException);
                 }
@@ -73,7 +73,10 @@ public class ClientHandler {
         }else if(message.startsWith("/q")) {
             sendMessage("Server: Bye, bye");
             server.unsubscribe(this);
+            server.broadcast("Server: " + nickName + "has left from chat");
             return false;
+        } else if(message.startsWith("/nick")){
+            changeNickname(message);
         }else {
             server.broadcast(nickName + ": " + message);
             server.getTextFileController().write(nickName + ": "+message);
@@ -81,16 +84,32 @@ public class ClientHandler {
         return true;
     }
 
+    private void changeNickname(String message) throws IOException {
+        String[] splitMessage = message.split("\\s");
+        if (splitMessage.length != 2){
+            sendMessage("Server: Incorrect request for change your nickname");
+        } else if (!server.isUnregisteredNickName(splitMessage[1])){
+            sendMessage("Server: User with this nickname already registered");
+        } else{
+
+            server.getDataBaseController().changeNickname(nickName, splitMessage[1]);
+            server.broadcast("Server: " + nickName+" changed his nickname, now he is "+splitMessage[1]);
+            nickName = splitMessage[1];
+        }
+
+    }
+
 
     private  void senderForPrivateMessages(String message)throws IOException{
         String[] messageArray = message.split("\\s");
         if (messageArray.length<3){
+            sendMessage("Server: incorrect request for sending private message");
             return;
         }
         if (server.isFreeNickName(messageArray[1])) {
             sendMessage("Server: Nickname " + messageArray[1] + " is not found");
         } else if (messageArray[1].equals(nickName)) {
-            sendMessage("You try send the private message for yourself, just train your memory...");
+            sendMessage("Server: You try send the private message for yourself, just train your memory...");
         }else{
             message= "Private msg from " + nickName+" for " + messageArray[1] + ": " + buildMessage(messageArray);
             server.singlecast(messageArray[1], message);
@@ -138,7 +157,7 @@ public class ClientHandler {
                             registerCredentials[2], registerCredentials[3]);
                     sendMessage("Server: Registration is complete");
                     nickName = registerCredentials[3];
-                    server.broadcast("Server:"+this.getNickName()+" joined this chat");
+                    server.broadcast("Server:"+ nickName +" joined this chat");
                     server.subscribe(this);
                     sendLastMessages(10);
                     System.out.println("Registered new user with nick: "+registerCredentials[3]);
@@ -147,7 +166,7 @@ public class ClientHandler {
                     sendMessage("Server: This nickname has already registered");
                 }
             }else {
-                sendMessage("Server: User with this password has already registered");
+                sendMessage("Server: User with this login or password has already registered");
             }
         } else {
             sendMessage("Server: Invalid authentication request");
@@ -164,7 +183,7 @@ public class ClientHandler {
                 if (server.isFreeNickName(maybeAuth.getNickName())) {
                     sendMessage("Server: Authentication is complete");
                     nickName = maybeAuth.getNickName();
-                    server.broadcast("Server:"+this.getNickName() + " joined this chat");
+                    server.broadcast("Server:" + nickName + " joined this chat");
                     server.subscribe(this);
                     sendLastMessages(10);
                     return true;
@@ -185,8 +204,13 @@ public class ClientHandler {
     }
 
     private String getHelpText(){
-        return "/W %NICKNAME%     your message write private message for user with name %NICKNAME%\n" +
-               "/help             get Help";
+        return """
+                /W %NICKNAME%     your message write private message for user with name %NICKNAME%
+                /help             get Help
+                /q                disconnect from server
+                /nick %NICKNAME%  change your nickname""";
+
+
     }
 
     public void sendLastMessages(int countOfMessages) throws IOException {

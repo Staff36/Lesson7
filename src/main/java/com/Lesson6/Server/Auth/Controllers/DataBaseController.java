@@ -97,5 +97,15 @@ public class DataBaseController {
             throwables.printStackTrace();
         }
     }
+    public synchronized void changeNickname(String currentNickname, String desiredNickname){
+        try {
+            preparedStatement=connection.prepareStatement("UPDATE accounts SET nickname=? WHERE nickname=?");
+            preparedStatement.setString(1,desiredNickname);
+            preparedStatement.setString(2,currentNickname);
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throw new RuntimeException("Writing to DB was wrong!", throwables);
+        }
+    }
 
 }

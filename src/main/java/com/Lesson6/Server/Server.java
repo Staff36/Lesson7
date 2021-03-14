@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Server {
@@ -94,7 +95,17 @@ public class Server {
         return textFileController;
     }
 
+
     public static void main(String[] args) {
         new Server();
+    }
+    public synchronized boolean isUnregisteredNickName(String nickName){
+        List<String> listOfNicknames = dataBaseController.getAllUsersNickNames();
+        for (String name:listOfNicknames) {
+            if (name.equals(nickName)){
+                return false;
+            }
+        }
+        return true;
     }
 }

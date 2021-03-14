@@ -2,5 +2,11 @@ Semen: Привет
 Private msg from Zhora for Semen: Привет секрет
 Private msg from Semen for Zhora: привет
 Private msg from Petr for Semen: Привет
+Zhora: e
+Zhora: s
+Zhora: Привет
+Zhora: s
+Nafanya: ok
+Nafanya: 2
 
-Zhora: /q
+Valya: Привет всем

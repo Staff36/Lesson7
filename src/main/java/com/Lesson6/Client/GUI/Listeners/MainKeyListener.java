@@ -22,7 +22,7 @@ public class MainKeyListener extends Sender implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 10)
-        super.send(inputField, chatArea);
+        super.send(inputField);
     }
 
     @Override

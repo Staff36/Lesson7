@@ -15,6 +15,6 @@ public class MainActionListener extends Sender implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        send(inputField, chatArea);
+        send(inputField);
     }
 }

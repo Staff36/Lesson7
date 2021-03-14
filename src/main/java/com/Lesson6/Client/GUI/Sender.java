@@ -14,7 +14,7 @@ public  abstract class Sender {
         this.chatArea = chatArea;
     }
 
-    public void send(JTextField inputField, JTextPane chatArea){
+    public void send(JTextField inputField){
         if (inputField.getText().isBlank())
             return;
         consumer.accept(inputField.getText());
