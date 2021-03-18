@@ -23,7 +23,11 @@ public class ChatFrame extends JFrame{
     private final JLabel authServerRequest = new JLabel();
     private final JLabel registrationServerRequest = new JLabel();
     private boolean connected = false;
+    DefaultListModel<String> model;
 
+    public DefaultListModel<String> getModel() {
+        return model;
+    }
 
     public void setConnected(boolean connected) {
         this.connected = connected;
@@ -159,6 +163,15 @@ public class ChatFrame extends JFrame{
     }
 
     public void initMainPanel(){
+        model = new DefaultListModel<>();
+        JPanel listOfUsersPanel= new JPanel();
+        listOfUsersPanel.setBackground(Color.getHSBColor(250,40, 235));
+        listOfUsersPanel.setLayout(new BorderLayout());
+        JLabel listOfUsersLabel = new JLabel("People online: ");
+        JList<String> list= new JList(model);
+        listOfUsersPanel.add(listOfUsersLabel, BorderLayout.NORTH);
+        listOfUsersPanel.add(list, BorderLayout.CENTER);
+        list.setBackground(Color.getHSBColor(250,40, 235));
         setBounds(0,0,400,600);
         setConnected(true);
         loginPanel.setVisible(false);
@@ -167,6 +180,7 @@ public class ChatFrame extends JFrame{
         mainJPanel.setLayout(new BorderLayout());
         mainJPanel.add(topPanel,BorderLayout.CENTER);
         mainJPanel.add(bottomPanel,BorderLayout.SOUTH);
+        mainJPanel.add(listOfUsersPanel,BorderLayout.EAST);
         setTopPanel();
         setBottomPanel();
         sendButton.addActionListener(new MainActionListener(messageConsumer, inputField, chatArea));

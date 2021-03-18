@@ -7,7 +7,7 @@ public  abstract class Sender {
     protected Consumer<String> consumer;
     protected JTextField inputField;
     protected JTextPane chatArea;
-
+    DefaultListModel<String> model;
     public Sender(Consumer<String> consumer, JTextField inputField, JTextPane chatArea) {
         this.consumer = consumer;
         this.inputField = inputField;

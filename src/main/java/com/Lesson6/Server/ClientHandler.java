@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
 
 
 public class ClientHandler {
@@ -24,8 +25,7 @@ public class ClientHandler {
             this.server = server;
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
-            new Thread(this::listen)
-                    .start();
+            server.getAccountsThreads().submit(this::listen);
         } catch (IOException e) {
             throw new RuntimeException("Something wrong, e");
         }
@@ -39,6 +39,7 @@ public class ClientHandler {
         }
         readMessage();
         System.out.println("Client was disconnected from server. Socket "+ socket);
+
     }
 
     public void sendMessage(String message) throws IOException {
@@ -56,7 +57,7 @@ public class ClientHandler {
             } catch (IOException e) {
                 try {
                     server.unsubscribe(this);
-                    server.broadcast("Server: " + nickName + " has left from chat.");
+                    server.broadcast("Server: " + nickName + " has left from chat");
                 } catch (IOException ioException) {
                     throw new RuntimeException("SWW in broadcasting after disconnecting one of users", ioException);
                 }
@@ -73,7 +74,7 @@ public class ClientHandler {
         }else if(message.startsWith("/q")) {
             sendMessage("Server: Bye, bye");
             server.unsubscribe(this);
-            server.broadcast("Server: " + nickName + "has left from chat");
+            server.broadcast("Server: " + nickName + " has left from chat");
             return false;
         } else if(message.startsWith("/nick")){
             changeNickname(message);
@@ -157,8 +158,9 @@ public class ClientHandler {
                             registerCredentials[2], registerCredentials[3]);
                     sendMessage("Server: Registration is complete");
                     nickName = registerCredentials[3];
-                    server.broadcast("Server:"+ nickName +" joined this chat");
+                    server.broadcast("Server: "+ nickName +" joined this chat");
                     server.subscribe(this);
+                    sendOnlineUsers();
                     sendLastMessages(10);
                     System.out.println("Registered new user with nick: "+registerCredentials[3]);
                     return true;
@@ -183,8 +185,9 @@ public class ClientHandler {
                 if (server.isFreeNickName(maybeAuth.getNickName())) {
                     sendMessage("Server: Authentication is complete");
                     nickName = maybeAuth.getNickName();
-                    server.broadcast("Server:" + nickName + " joined this chat");
+                    server.broadcast("Server: " + nickName + " joined this chat");
                     server.subscribe(this);
+                    sendOnlineUsers();
                     sendLastMessages(10);
                     return true;
                 } else{
@@ -197,6 +200,16 @@ public class ClientHandler {
             sendMessage("Server: Invalid authentication request");
         }
         return false;
+    }
+
+    private void sendOnlineUsers() throws IOException {
+        StringBuilder stringBuilder = new StringBuilder("ServerSendOnlineUsers: ");
+        Set<ClientHandler> handlers = server.getHandlers();
+        for (ClientHandler handler : handlers) {
+            stringBuilder.append(handler.getNickName()+" ");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length()-1);
+        sendMessage(stringBuilder.toString());
     }
 
     public String getNickName() {

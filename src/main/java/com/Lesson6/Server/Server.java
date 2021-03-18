@@ -10,35 +10,34 @@ import java.net.Socket;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
     private final AuthentificatonService authentificatonService;
     private ServerSocket serverSocket;
     private final Set<ClientHandler> handlers;
-
-
-
-    private final TextFileController textFileController;
-    public DataBaseController getDataBaseController() {
-        return dataBaseController;
-    }
-
     private DataBaseController dataBaseController;
+    private final TextFileController textFileController;
+    private final ExecutorService accountsThreads;
 
     public Set<ClientHandler> getHandlers() {
         return handlers;
+    }
+
+    public DataBaseController getDataBaseController() {
+        return dataBaseController;
     }
 
     public Server() {
         this.textFileController = new TextFileController("chatHistory.txt");
         this.authentificatonService = new AuthentificatonService();
         handlers = new HashSet<>();
-        dataBaseController= new DataBaseController();
+        dataBaseController = new DataBaseController();
+        accountsThreads = Executors.newCachedThreadPool();
         try {
-            serverSocket= new ServerSocket(8989);
-
+            serverSocket = new ServerSocket(8989);
             init();
-
         } catch (IOException e) {
             throw new RuntimeException("Something wrong", e);
         }
@@ -52,8 +51,8 @@ public class Server {
         System.out.println("-------------------------");
         while (true){
             System.out.println("Waiting for new connection");
-            Socket client= serverSocket.accept();
-            System.out.println("Client accepted "+client);
+            Socket client = serverSocket.accept();
+            System.out.println("Client accepted " + client);
             new ClientHandler(client, this );
         }
 
@@ -66,7 +65,7 @@ public class Server {
         handlers.remove(handler);
     }
     public synchronized void broadcast(String message) throws IOException {
-        for (ClientHandler handler: handlers) {
+        for (ClientHandler handler : handlers) {
             handler.sendMessage(message);
         }
     }
@@ -76,7 +75,7 @@ public class Server {
     }
 
     public synchronized boolean isFreeNickName(String nickName){
-        for (ClientHandler handler:handlers) {
+        for (ClientHandler handler : handlers) {
             if (handler.getNickName().equals(nickName)){
             return false;
             }
@@ -85,9 +84,10 @@ public class Server {
     }
 
     public synchronized void singlecast(String nickName, String message) throws IOException{
-        for (ClientHandler handler: handlers) {
+        for (ClientHandler handler : handlers) {
             if (handler.getNickName().equals(nickName)){
-            handler.sendMessage(message);}
+                handler.sendMessage(message);
+            }
         }
     }
 
@@ -101,11 +101,14 @@ public class Server {
     }
     public synchronized boolean isUnregisteredNickName(String nickName){
         List<String> listOfNicknames = dataBaseController.getAllUsersNickNames();
-        for (String name:listOfNicknames) {
+        for (String name : listOfNicknames) {
             if (name.equals(nickName)){
                 return false;
             }
         }
         return true;
+    }
+    public ExecutorService getAccountsThreads() {
+        return accountsThreads;
     }
 }
