@@ -38,7 +38,7 @@ public class ClientHandler {
             System.out.println("Guest was disconnected from server");
         }
         readMessage();
-        System.out.println("Client was disconnected from server. Socket "+ socket);
+        System.out.println("Client" + nickName + " was disconnected from server. Socket "+ socket);
 
     }
 
@@ -92,10 +92,10 @@ public class ClientHandler {
         } else if (!server.isUnregisteredNickName(splitMessage[1])){
             sendMessage("Server: User with this nickname already registered");
         } else{
-
             server.getDataBaseController().changeNickname(nickName, splitMessage[1]);
-            server.broadcast("Server: " + nickName+" changed his nickname, now he is "+splitMessage[1]);
+            server.broadcast("Server: " + nickName+" changed his nickname, now he is " + splitMessage[1]);
             nickName = splitMessage[1];
+            sendMessage("Server: your Nickname is "+nickName);
         }
 
     }
@@ -103,7 +103,7 @@ public class ClientHandler {
 
     private  void senderForPrivateMessages(String message)throws IOException{
         String[] messageArray = message.split("\\s");
-        if (messageArray.length<3){
+        if (messageArray.length < 3){
             sendMessage("Server: incorrect request for sending private message");
             return;
         }
@@ -112,11 +112,11 @@ public class ClientHandler {
         } else if (messageArray[1].equals(nickName)) {
             sendMessage("Server: You try send the private message for yourself, just train your memory...");
         }else{
-            message= "Private msg from " + nickName+" for " + messageArray[1] + ": " + buildMessage(messageArray);
+            message= "Private msg from " + nickName+" for " + messageArray[1] +
+                    ": " + buildMessage(messageArray);
             server.singlecast(messageArray[1], message);
             sendMessage(message);
             server.getTextFileController().write(message);
-
         }
     }
 
@@ -158,11 +158,12 @@ public class ClientHandler {
                             registerCredentials[2], registerCredentials[3]);
                     sendMessage("Server: Registration is complete");
                     nickName = registerCredentials[3];
+                    sendMessage("Server: your Nickname is "+nickName);
                     server.broadcast("Server: "+ nickName +" joined this chat");
                     server.subscribe(this);
                     sendOnlineUsers();
                     sendLastMessages(10);
-                    System.out.println("Registered new user with nick: "+registerCredentials[3]);
+                    System.out.println("Registered new user with nick: " + registerCredentials[3]);
                     return true;
                 } else {
                     sendMessage("Server: This nickname has already registered");
@@ -185,6 +186,7 @@ public class ClientHandler {
                 if (server.isFreeNickName(maybeAuth.getNickName())) {
                     sendMessage("Server: Authentication is complete");
                     nickName = maybeAuth.getNickName();
+                    sendMessage("Server: your Nickname is "+nickName);
                     server.broadcast("Server: " + nickName + " joined this chat");
                     server.subscribe(this);
                     sendOnlineUsers();

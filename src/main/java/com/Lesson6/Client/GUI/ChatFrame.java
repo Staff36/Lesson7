@@ -6,10 +6,17 @@ import com.Lesson6.Client.GUI.Listeners.MainActionListener;
 import com.Lesson6.Client.GUI.Listeners.MainKeyListener;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
 import java.awt.*;
 import java.util.function.Consumer;
 
 public class ChatFrame extends JFrame{
+    private String nickname = "";
+
+    public Icon getIcon() {
+        return icon;
+    }
+
     private final Icon icon = new ImageIcon("sendIcon.png");
     private JPanel authPanel = new JPanel();
     private final JPanel topPanel = new JPanel();
@@ -24,6 +31,16 @@ public class ChatFrame extends JFrame{
     private final JLabel registrationServerRequest = new JLabel();
     private boolean connected = false;
     DefaultListModel<String> model;
+    private final JPanel listOfUsersPanel= new JPanel();
+    JLabel listOfUsersLabel = new JLabel("People online: ");
+    JList<String> list;
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
 
     public DefaultListModel<String> getModel() {
         return model;
@@ -162,18 +179,21 @@ public class ChatFrame extends JFrame{
 
     }
 
-    public void initMainPanel(){
+    private void initListOfUsers(){
         model = new DefaultListModel<>();
-        JPanel listOfUsersPanel= new JPanel();
+        list = new JList(model);
         listOfUsersPanel.setBackground(Color.getHSBColor(250,40, 235));
         listOfUsersPanel.setLayout(new BorderLayout());
-        JLabel listOfUsersLabel = new JLabel("People online: ");
-        JList<String> list= new JList(model);
         listOfUsersPanel.add(listOfUsersLabel, BorderLayout.NORTH);
         listOfUsersPanel.add(list, BorderLayout.CENTER);
         list.setBackground(Color.getHSBColor(250,40, 235));
+        list.addListSelectionListener(this::getPrivatePrefixFromListOfUsers);
+    }
+
+    public void initMainPanel(){
         setBounds(0,0,400,600);
         setConnected(true);
+        initListOfUsers();
         loginPanel.setVisible(false);
         JPanel mainJPanel = new JPanel();
         add(mainJPanel);
@@ -185,6 +205,7 @@ public class ChatFrame extends JFrame{
         setBottomPanel();
         sendButton.addActionListener(new MainActionListener(messageConsumer, inputField, chatArea));
         inputField.addKeyListener(new MainKeyListener(messageConsumer, inputField, chatArea));
+
     }
 
     public void initChatFrame(){
@@ -198,6 +219,11 @@ public class ChatFrame extends JFrame{
 
     private void setTopPanel(){
         topPanel.setLayout(new BorderLayout());
+        JScrollPane scrollPane = new JScrollPane(chatArea,
+                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        topPanel.add(scrollPane, BorderLayout.EAST);
         topPanel.add(chatArea,BorderLayout.CENTER);
     }
 
@@ -218,4 +244,14 @@ public class ChatFrame extends JFrame{
         return registrationServerRequest;
     }
 
+    private void getPrivatePrefixFromListOfUsers(ListSelectionEvent e) {
+        if (list.getSelectedValue() != null) {
+            if (list.getSelectedValue().equals(nickname + "(You)")) {
+                inputField.setText("/w " + nickname + " ");
+            } else {
+                inputField.setText("/w " + list.getSelectedValue() + " ");
+            }
+            list.clearSelection();
+        }
+    }
 }

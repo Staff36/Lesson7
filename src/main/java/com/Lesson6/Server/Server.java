@@ -3,21 +3,18 @@ package com.Lesson6.Server;
 import com.Lesson6.Server.Auth.AuthentificatonService;
 import com.Lesson6.Server.Auth.Controllers.DataBaseController;
 import com.Lesson6.Server.Auth.Controllers.TextFileController;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
+
 
 public class Server {
     private final AuthentificatonService authentificatonService;
-    private ServerSocket serverSocket;
+    private final ServerSocket serverSocket;
     private final Set<ClientHandler> handlers;
-    private DataBaseController dataBaseController;
+    private final DataBaseController dataBaseController;
     private final TextFileController textFileController;
     private final ExecutorService accountsThreads;
 
@@ -55,7 +52,6 @@ public class Server {
             System.out.println("Client accepted " + client);
             new ClientHandler(client, this );
         }
-
     }
 
     public synchronized void subscribe(ClientHandler handler){
@@ -95,10 +91,6 @@ public class Server {
         return textFileController;
     }
 
-
-    public static void main(String[] args) {
-        new Server();
-    }
     public synchronized boolean isUnregisteredNickName(String nickName){
         List<String> listOfNicknames = dataBaseController.getAllUsersNickNames();
         for (String name : listOfNicknames) {
@@ -108,7 +100,12 @@ public class Server {
         }
         return true;
     }
+
     public ExecutorService getAccountsThreads() {
         return accountsThreads;
+    }
+
+    public static void main(String[] args) {
+        new Server();
     }
 }

@@ -3,22 +3,23 @@ package com.Lesson6.Server.Auth.Controllers;
 import java.io.*;
 
 public class TextFileController {
-    FileWriter writeStream;
-    FileReader readStream;
-    String fileName;
-    public TextFileController(String fileName){
-        try {
-            this.fileName= fileName;
-            writeStream=new FileWriter(fileName,true);
 
+    private FileWriter writeStream;
+    private FileReader readStream;
+    private final String fileName;
+
+    public TextFileController(String fileName){
+        this.fileName = fileName;
+        try {
+            writeStream = new FileWriter(fileName,true);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    public boolean write(String message){
+//writeStream не закрываю так как он постоянно используетсяж
+    public synchronized boolean write(String message){
         try {
             writeStream.write(message+"\n");
             writeStream.flush();
@@ -29,17 +30,18 @@ public class TextFileController {
         }
     }
 
-    public String getAllMessages() {
-        StringBuilder sb= new StringBuilder();
+    public synchronized String getAllMessages() throws IOException {
+        StringBuilder sb = new StringBuilder();
         char currentChar;
         try {
-            readStream= new FileReader(fileName);
-            while ((currentChar=(char)readStream.read())!=(char) -1){
+            readStream = new FileReader(fileName);
+            while ((currentChar = (char)readStream.read()) != (char) -1){
                 sb.append(currentChar);
             }
-            readStream.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            readStream.close();
         }
        return sb.toString();
     }

@@ -8,12 +8,5 @@
       <jdbc-url>jdbc:sqlite:C:\GeekBrains\Level 2\Lesson7\ChatDB.s3db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="identifier.sqlite" uuid="816583f9-5278-47c5-826e-6e56471490e5">
-      <driver-ref>sqlite.xerial</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:identifier.sqlite</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
   </component>
 </project>

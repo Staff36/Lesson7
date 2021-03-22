@@ -38,7 +38,7 @@ public class LoginKeyListener implements KeyListener {
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == 10){
             String login = removeSpaces(loginField);
-            String password= removeSpaces(passwordField);
+            String password = removeSpaces(passwordField);
             if (login.isBlank()||password.isBlank()){
                 return;
             }
