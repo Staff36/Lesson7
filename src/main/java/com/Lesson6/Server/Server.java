@@ -3,14 +3,21 @@ package com.Lesson6.Server;
 import com.Lesson6.Server.Auth.AuthentificatonService;
 import com.Lesson6.Server.Auth.Controllers.DataBaseController;
 import com.Lesson6.Server.Auth.Controllers.TextFileController;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 public class Server {
+    private static final Logger LOGGER = LogManager.getLogger(Server.class.getName());
     private final AuthentificatonService authentificatonService;
     private final ServerSocket serverSocket;
     private final Set<ClientHandler> handlers;
@@ -28,27 +35,32 @@ public class Server {
 
     public Server() {
         this.textFileController = new TextFileController("chatHistory.txt");
+        LOGGER.debug("Text file controller has successful created");
         this.authentificatonService = new AuthentificatonService();
+        LOGGER.debug("Service of authentication has successful created");
         handlers = new HashSet<>();
         dataBaseController = new DataBaseController();
+        LOGGER.debug("Data base controller has successful created");
         accountsThreads = Executors.newCachedThreadPool();
         try {
             serverSocket = new ServerSocket(8989);
             init();
         } catch (IOException e) {
+            LOGGER.error("Something wrong error to starting Server", e);
             throw new RuntimeException("Something wrong", e);
         }
     }
 
     private void init() throws IOException {
-        System.out.println("Server was started");
+        LOGGER.info("Server was started");
         dataBaseController.connectToDB();
-        System.out.println("-------------------------\nList of registered users");
+        LOGGER.debug("------------------------- List of registered users");
         dataBaseController.displayAllUsersNickNames();
-        System.out.println("-------------------------");
+        LOGGER.debug("-------------------------");
         while (true){
-            System.out.println("Waiting for new connection");
+            LOGGER.info("Server waiting for new connection");
             Socket client = serverSocket.accept();
+            LOGGER.info("Client accepted " + client);
             System.out.println("Client accepted " + client);
             new ClientHandler(client, this );
         }

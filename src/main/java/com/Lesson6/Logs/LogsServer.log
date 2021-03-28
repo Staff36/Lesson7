@@ -1,0 +1,212 @@
+%5p 2021-03-27 16:08:25 - : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+%5p 2021-03-27 16:08:25 - : com.Lesson6.Server.Server  - Text file controller has successful created
+%5p 2021-03-27 16:08:25 - : com.Lesson6.Server.Server  - Service of authentication has successful created
+%5p 2021-03-27 16:08:25 - : com.Lesson6.Server.Server  - Data base controller has successful created
+%5p 2021-03-27 16:08:25 - : com.Lesson6.Server.Server  - Server was started
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Server  - ------------------------- List of registered users
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Server  - -------------------------
+%5p 2021-03-27 16:08:26 - : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - Data base controller has successful created
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+ INFO-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+ INFO-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 16:09:05 [main]: com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 16:09:35 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 16:09:35 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 16:09:35 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 16:09:35 : com.Lesson6.Server.Server  - Data base controller has successful created
+DEBUG-2021-03-27 16:09:35 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+ INFO-2021-03-27 16:09:36 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 16:09:36 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+ INFO-2021-03-27 16:09:36 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 16:09:36 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 16:23:19 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 16:25:01 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 16:25:01 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 16:25:01 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 16:25:01 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 16:25:10 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 16:25:15 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 16:25:18 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 16:25:19 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 16:25:22 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:00:34 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:00:34 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:00:34 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:00:34 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:00:34 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:00:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:00:48 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:00:50 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:02:30 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:02:30 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:02:30 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:02:30 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:02:30 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:04:05 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:04:05 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:04:05 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:04:05 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:04:05 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:04:18 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:04:18 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:04:18 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:04:18 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:04:18 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:04:19 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:05:09 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:05:51 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:05:59 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:06:38 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:06:39 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:07:31 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:07:31 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:07:31 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:07:31 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:07:31 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:07:32 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:07:32 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:08:10 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:18:47 : com.Lesson6.Server.Server  - Server waiting for new connection
+DEBUG-2021-03-27 17:19:38 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:19:38 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:19:38 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:19:38 : com.Lesson6.Server.Server  - Data base controller has successful created
+ERROR-2021-03-27 17:19:38 : com.Lesson6.Server.Server  - Something wrong error to starting Server
+java.net.BindException: Address already in use: bind
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:550)
+	at java.base/sun.nio.ch.Net.bind(Net.java:539)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:643)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:396)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:282)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:173)
+	at com.Lesson6.Server.Server.<init>(Server.java:46)
+	at com.Lesson6.Server.Server.main(Server.java:121)
+DEBUG-2021-03-27 17:26:37 : com.Lesson6.Server.Auth.Controllers.TextFileController  - FileWriter has already created
+DEBUG-2021-03-27 17:26:37 : com.Lesson6.Server.Server  - Text file controller has successful created
+DEBUG-2021-03-27 17:26:37 : com.Lesson6.Server.Server  - Service of authentication has successful created
+DEBUG-2021-03-27 17:26:37 : com.Lesson6.Server.Server  - Data base controller has successful created
+ INFO-2021-03-27 17:26:37 : com.Lesson6.Server.Server  - Server was started
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Connection to database successful
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Server  - ------------------------- List of registered users
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Marfa
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Kuropatka
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Vasya
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Grisha
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Auth.Controllers.DataBaseController  - Murka
+DEBUG-2021-03-27 17:26:39 : com.Lesson6.Server.Server  - -------------------------
+ INFO-2021-03-27 17:27:24 : com.Lesson6.Server.Server  - Server waiting for new connection
+ INFO-2021-03-27 17:27:25 : com.Lesson6.Server.Server  - Client accepted Socket[addr=/127.0.0.1,port=57677,localport=8989]
+DEBUG-2021-03-27 17:27:37 : com.Lesson6.Server.ClientHandler  - InputStream has already Created
+DEBUG-2021-03-27 17:27:40 : com.Lesson6.Server.ClientHandler  - OutputStream has already Created
+DEBUG-2021-03-27 17:27:44 : com.Lesson6.Server.Auth.AuthTimer  - Auth timer has already started
+ INFO-2021-03-27 17:27:45 : com.Lesson6.Server.Server  - Server waiting for new connection

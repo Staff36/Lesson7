@@ -2,6 +2,8 @@ package com.Lesson6.Server;
 
 import com.Lesson6.Server.Auth.AuthTimer;
 import com.Lesson6.Server.Auth.AuthentificationData;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -13,6 +15,8 @@ import java.util.Set;
 
 
 public class ClientHandler {
+
+    private static final Logger LOGGER = LogManager.getLogger(ClientHandler.class);
     private final Server server;
     private final Socket socket;
     private final DataInputStream in;
@@ -24,10 +28,13 @@ public class ClientHandler {
         try {
             this.server = server;
             this.in = new DataInputStream(socket.getInputStream());
+            LOGGER.debug("InputStream has already Created");
             this.out = new DataOutputStream(socket.getOutputStream());
+            LOGGER.debug("OutputStream has already Created");
             server.getAccountsThreads().submit(this::listen);
         } catch (IOException e) {
-            throw new RuntimeException("Something wrong, e");
+            LOGGER.error("Something wrong", e);
+            throw new RuntimeException("Something wrong", e);
         }
     }
 
@@ -35,10 +42,10 @@ public class ClientHandler {
         try {
             doAuth();
         } catch (IOException e) {
-            System.out.println("Guest was disconnected from server");
+            LOGGER.info("Guest was disconnected from server");
         }
         readMessage();
-        System.out.println("Client" + nickName + " was disconnected from server. Socket "+ socket);
+        LOGGER.info("Client" + nickName + " was disconnected from server. Socket "+ socket);
 
     }
 
@@ -59,6 +66,7 @@ public class ClientHandler {
                     server.unsubscribe(this);
                     server.broadcast("Server: " + nickName + " has left from chat");
                 } catch (IOException ioException) {
+                    LOGGER.error("SWW in broadcasting after disconnecting one of users", ioException);
                     throw new RuntimeException("SWW in broadcasting after disconnecting one of users", ioException);
                 }
                 return;
@@ -142,9 +150,11 @@ public class ClientHandler {
                     return;
                 }
             }else{
+                LOGGER.debug("User sent invalid authentication request");
                 sendMessage("Server: Invalid authentication request");
             }
         }
+        LOGGER.debug("Time of Authorization for this User is over");
         sendMessage("Server: Time to login is over, try again later");
     }
 
@@ -163,15 +173,18 @@ public class ClientHandler {
                     server.subscribe(this);
                     sendOnlineUsers();
                     sendLastMessages(10);
-                    System.out.println("Registered new user with nick: " + registerCredentials[3]);
+                    LOGGER.info("Registered new user " + socket + " with Login: " + registerCredentials[1]);
                     return true;
                 } else {
+                    LOGGER.debug("User " + socket + " wrote nickname which has already registered");
                     sendMessage("Server: This nickname has already registered");
                 }
             }else {
+                LOGGER.debug("User " + socket + " wrote login or password which has already registered");
                 sendMessage("Server: User with this login or password has already registered");
             }
         } else {
+            LOGGER.debug("Invalid authentication request from user " + socket);
             sendMessage("Server: Invalid authentication request");
         }
         return false;
@@ -189,17 +202,21 @@ public class ClientHandler {
                     sendMessage("Server: your Nickname is "+nickName);
                     server.broadcast("Server: " + nickName + " joined this chat");
                     server.subscribe(this);
+                    LOGGER.info("Authorized user " + socket + " with Login: " + credentials[1]);
                     sendOnlineUsers();
                     sendLastMessages(10);
                     return true;
                 } else{
+                    LOGGER.debug("User " + socket + " wrote login or password which has already logged ON");
                     sendMessage("Server: This user has already logged in");
                 }
             } else {
+                LOGGER.debug("User " + socket + " wrote  incorrect or non-existent login or password");
                 sendMessage("Server: Unknown user, incorrect login or password");
             }
         } else{
-            sendMessage("Server: Invalid authentication request");
+            LOGGER.debug("Invalid authorization request from user " + socket);
+            sendMessage("Server: Invalid authorization request");
         }
         return false;
     }
